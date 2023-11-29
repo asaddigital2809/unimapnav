@@ -39,7 +39,8 @@ dependencies:
   geolocator:
   geocoding:
   permission_handler:
-
+  get:
+  get_it:
 dev_dependencies:
   flutter_test:
     sdk: flutter

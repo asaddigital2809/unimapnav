@@ -5,6 +5,8 @@ import 'package:unimapnav/views/tabs/home_screen.dart';
 import 'package:unimapnav/widgets/custom_password_textfield.dart';
 import 'package:unimapnav/widgets/custom_textfield.dart';
 
+import '../bottom_nav/bottom_nav.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -13,9 +15,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()));
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => const BottomNav()), (route) => false);
             },
             child: const Text('Login'),
           ),
