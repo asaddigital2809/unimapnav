@@ -49,7 +49,7 @@ class CustomTextField extends StatelessWidget {
       this.isEnabled = true,
       this.maxLength,
       this.onChanged,
-        this.onEditingComplete
+        this.onEditingComplete, required Color borderColor
       });
 
   @override
