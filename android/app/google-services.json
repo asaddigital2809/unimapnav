@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1002784892773",
+    "project_id": "unimap-a603b",
+    "storage_bucket": "unimap-a603b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002784892773:android:3adf8512479448ee57638c",
+        "android_client_info": {
+          "package_name": "com.digital.unimapnav"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz2pAh5i8NwxNBAh3UQslrCmVzjRvTl84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

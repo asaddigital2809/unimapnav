@@ -39,6 +39,16 @@ dependencies:
   geolocator:
   geocoding:
   permission_handler:
+  firebase_core:
+  firebase_auth:
+  firebase_messaging:
+  cloud_firestore:
+  firebase_storage:
+  awesome_notifications:
+  flutter_local_notifications:
+  shared_preferences:
+
+
   get:
   get_it:
 dev_dependencies:

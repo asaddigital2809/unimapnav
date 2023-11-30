@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unimapnav/views/tabs/home_screen.dart';
+import 'package:unimapnav/views/tabs/profile_screen.dart';
+import 'package:unimapnav/views/tabs/update_screen.dart';
 
 class BottomNavController extends GetxController {
 
@@ -12,7 +14,7 @@ class BottomNavController extends GetxController {
   }
   List<Widget> screens = [
     const HomeScreen(),
-    const Center(child: Text('Updates')),
-    const Center(child: Text('Profile')),
+    const UpdateScreen(),
+    const ProfileScreen(),
   ];
 }
