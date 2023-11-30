@@ -43,30 +43,32 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => const BottomNav()),
-                  (route) => false);
-            },
-            child: const Text('Login'),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const BottomNav()),
+                    (route) => false);
+              },
+              child: const Text('Login'),
+            ),
           ),
           const SizedBox(
             height: 20,
           ),
           TextButton(
               onPressed: () {
-                Navigator.pushAndRemoveUntil(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const SignUpScreen()),
-                    (route) => false);
+                    );
               },
               child: const Text(
-                'I Do not have an account',
+                'Don\'t have an account? Sign up',
                 style: TextStyle(
-                  decoration: TextDecoration.underline,
                   decorationColor: Colors.black,
                   color: Colors.blue,
                   fontSize: 16,

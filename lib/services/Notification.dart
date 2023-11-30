@@ -104,7 +104,7 @@ class NotificationPop {
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       AwesomeNotifications().initialize(
-        'resource://mipmap/ic_launcher',
+        'resource://drawable/app_icon',
         [
           NotificationChannel(
               channelGroupKey: 'basic_channel_group',
@@ -165,7 +165,7 @@ class NotificationPop {
         playSound: true,
         showBadge: true);
     AwesomeNotifications().initialize(
-      'resource://mipmap/ic_launcher',
+      'resource://drawable/app_icon',
       [
         NotificationChannel(
             channelGroupKey: 'basic_channel_group',

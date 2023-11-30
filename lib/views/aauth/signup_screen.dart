@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:unimapnav/views/bottom_nav/bottom_nav.dart';
+import 'package:unimapnav/views/tabs/home_screen.dart';
 import 'package:unimapnav/widgets/custom_textfield.dart';
 
 import '../passwords/password.dart';
@@ -68,7 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (_isButtonEnabled) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const Password()),
+        MaterialPageRoute(builder: (context) => const BottomNav()),
         (route) => false,
       );
     }
@@ -116,9 +118,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 _infoText,
                 style: const TextStyle(color: Colors.red),
               ),
-              ElevatedButton(
-                onPressed: _isButtonEnabled ? _onNextPressed : null,
-                child: const Text('Next'),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _isButtonEnabled ? _onNextPressed : null,
+                  child: const Text('Next'),
+                ),
               ),
             ],
           ),
