@@ -14,9 +14,9 @@ FlutterLocalNotificationsPlugin();
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await initNotification();
-  NotificationPop notificationPop = NotificationPop();
-  notificationPop.setFcmToken();
+  // await initNotification();
+  // NotificationPop notificationPop = NotificationPop();
+  // notificationPop.setFcmToken();
   runApp(const MyApp());
 }
 
