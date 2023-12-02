@@ -10,8 +10,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  ImageProvider _profileImage =
-      const NetworkImage('https://www.bing.com/ck/a?!&&p=8d37bb084ff9ef05JmltdHM9MTcwMTM4ODgwMCZpZ3VpZD0wMDM5ZTFjYi1jMTIzLTYxOGEtMjgyZS1mMzY1YzAyYTYwMzQmaW5zaWQ9NTQ3MA&ptn=3&ver=2&hsh=3&fclid=0039e1cb-c123-618a-282e-f365c02a6034&u=a1L2ltYWdlcy9zZWFyY2g_cT1pbWFnZXMmRk9STT1JUUZSQkEmaWQ9RUVDRkJCN0Y0MzIwOTIxNTcxQTUzOURCNDU5Q0FDRkU5RDFFQzI0Mg&ntb=1'); // Default image
+  ImageProvider? _profileImage ;
 
   Future<void> _pickImage() async {
     final pickedFile =
@@ -27,68 +26,77 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile Settings'),
-      ),
-      body: ListView(
-        children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: const Text('name'),
-            accountEmail: const Text('email'),
-            currentAccountPictureSize: const Size.square(80),
-            currentAccountPicture: GestureDetector(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            GestureDetector(
               onTap: _pickImage,
               child: Stack(
-
                 children: [
                   CircleAvatar(
-                    backgroundImage: _profileImage,
-                    backgroundColor: Colors.white38,
-                    radius: 70,
-                    child:  const Icon(
-                Icons.add_a_photo,
-                color: Colors.white,
-                size:60.0,
-              ),
+                    backgroundImage: _profileImage ?? const AssetImage('assets/images/profile.png'),
+                    backgroundColor: Colors.grey[300],
+                    radius: 50,
+                    child:  _profileImage == null ? const Icon(
+                      Icons.add_a_photo,
+                      color: Colors.white,
+                      size:60.0,
+                    ):const SizedBox(),
                   ),
-
                 ],
               ),
             ),
-            decoration: const BoxDecoration(color: Colors.grey),
-          ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              'John Doe',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text(
+              'abc@gmail.com'),
 
-          const SizedBox(
-            height: 10,
-          ),
-          const ListTile(
-            leading: Icon(
-              Icons.person,
+
+            const SizedBox(
+              height: 50,
             ),
-            title: Text('View Profile'),
-            trailing: Icon(Icons.arrow_forward_ios),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const ListTile(
-            leading: Icon(
-              Icons.lock_reset,
+            const ListTile(
+              leading: Icon(
+                Icons.person,
+              ),
+              title: Text('View Profile'),
+              trailing: Icon(Icons.arrow_forward_ios),
             ),
-            title: Text('Reset Password'),
-            trailing: Icon(Icons.arrow_forward_ios),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const ListTile(
-            leading: Icon(
-              Icons.logout_outlined,
+            const SizedBox(
+              height: 10,
             ),
-            title: Text('Logout'),
-            trailing: Icon(Icons.arrow_forward_ios),
-          ),
-        ],
+            const ListTile(
+              leading: Icon(
+                Icons.lock_reset,
+              ),
+              title: Text('Reset Password'),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const ListTile(
+              leading: Icon(
+                Icons.logout_outlined,
+              ),
+              title: Text('Logout'),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+          ],
+        ),
       ),
     );
   }
