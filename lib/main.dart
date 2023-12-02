@@ -13,10 +13,10 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // await initNotification();
-  // NotificationPop notificationPop = NotificationPop();
-  // notificationPop.setFcmToken();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initNotification();
+  NotificationPop notificationPop = NotificationPop();
+  notificationPop.setFcmToken();
   runApp(const MyApp());
 }
 

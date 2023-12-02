@@ -47,7 +47,7 @@ dependencies:
   awesome_notifications:
   flutter_local_notifications:
   shared_preferences:
-
+  timeago:
 
   get:
   get_it:
