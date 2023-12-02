@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:unimapnav/widgets/custom_password_textfield.dart';
 
-class Password extends StatefulWidget {
-  const Password({Key? key}) : super(key: key);
+class PasswordScreen extends StatefulWidget {
+  const PasswordScreen({Key? key}) : super(key: key);
 
   @override
-  State<Password> createState() => _PasswordState();
+  State<PasswordScreen> createState() => _PasswordState();
 }
 
-class _PasswordState extends State<Password> {
+class _PasswordState extends State<PasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();

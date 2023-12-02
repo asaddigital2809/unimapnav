@@ -20,7 +20,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             leading: Icon(Icons.notifications),
             title: Text('New Notification'),
             subtitle: Text('Description of notification #$index'),
-            trailing: Icon(Icons.arrow_forward_ios),
+           
             onTap: () {
 
             },

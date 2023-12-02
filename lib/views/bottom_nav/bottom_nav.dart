@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:unimapnav/views/tabs/notification_screen.dart';
 
 import '../../controllers/bottom_nav_controller.dart';
 class BottomNav extends StatefulWidget {
@@ -20,7 +21,11 @@ class _BottomNavState extends State<BottomNav> {
         title: const Text('Uni Map'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: (){ Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const NotificationScreen()),
+            );},
             icon: const Icon(Icons.notifications),
           )
         ],
