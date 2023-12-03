@@ -55,7 +55,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         DocumentSnapshot doc = snapshot.data![index];
                         // Build your widget based on DocumentSnapshot
                         // For example:
-                        return  Padding(
+                        return Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: Material(
                               elevation: 2,
@@ -69,35 +69,71 @@ class _UpdateScreenState extends State<UpdateScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                     Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ReadMoreText(text:doc['description'],trimLength: 100),
-                                    ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(10),
-                                          child: Image.network(
-                                           doc['url'],
-                                            height: 150,
-                                            width: double.infinity,
-                                            fit: BoxFit.fill,
-                                          )),
+                                      child: ReadMoreText(
+                                          text: doc['description'],
+                                          trimLength: 100),
                                     ),
-                                     Padding(
-                                       padding: const EdgeInsets.all(8.0),
-                                       child: Row(
-                                         mainAxisAlignment: MainAxisAlignment.start,
-                                         crossAxisAlignment:
-                                         CrossAxisAlignment.start,
-                                         children: [
-                                           const Text('Posted '),
-                                           Text(timeago.format(
-                                               DateTime.fromMillisecondsSinceEpoch(
-                                                   doc['createdAt'].millisecondsSinceEpoch))),
-                                         ],
-                                       ),
-                                     ),
+                                    doc['type'] == 'image'
+                                        ? Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                child: Image.network(
+                                                  doc['url'],
+                                                  height: 150,
+                                                  width: double.infinity,
+                                                  fit: BoxFit.fill,
+                                                )),
+                                          )
+                                        : Container(
+                                            margin: const EdgeInsets.all(8.0),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: Colors.deepPurple.shade200,
+                                            ),
+                                            child: ListTile(
+                                              title: const Text(
+                                                'Document',
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                              leading: const Icon(
+                                                Icons.link,
+                                                color: Colors.white,
+                                              ),
+                                              onTap: () {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(const SnackBar(
+                                                        content: Text(
+                                                            'Will be able to download later')));
+                                                // Open the link in browser
+                                              },
+                                              trailing: const Icon(
+                                                Icons.download,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text('Posted '),
+                                          Text(timeago.format(DateTime
+                                              .fromMillisecondsSinceEpoch(doc[
+                                                      'createdAt']
+                                                  .millisecondsSinceEpoch))),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               )),
