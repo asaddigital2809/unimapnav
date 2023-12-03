@@ -48,7 +48,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                       : const SizedBox(height: 20,),
                 ),
               ),
-              SizedBox(height: 40,),
+              const SizedBox(height: 40,),
               CustomTextField(
                 labelText: 'Name',
                 textInputType: TextInputType.text,
@@ -66,6 +66,10 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                 textInputType: TextInputType.emailAddress,
                 borderColor: Colors.green,
               ),
+              const SizedBox(height: 40),
+              SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(onPressed: (){}, child: const Text('Update Profile')))
             ],
           ),
         ),

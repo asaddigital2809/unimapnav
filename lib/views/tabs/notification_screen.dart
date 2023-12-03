@@ -11,14 +11,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notifications'),
+        backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
+        title: const Text('Notifications'),
       ),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('New Notification'),
+            leading: const Icon(Icons.notifications, color: Colors.deepPurple),
+            title: const Text('New Notification'),
             subtitle: Text('Description of notification #$index'),
            
             onTap: () {

@@ -82,13 +82,16 @@ class _PasswordState extends State<PasswordScreen> {
                 style: TextStyle(color: _infoColor),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _isButtonEnabled
-                    ? () {
-                        // Handle the sign-up logic here
-                      }
-                    : null,
-                child: const Text('Sign Up'),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _isButtonEnabled
+                      ? () {
+                          // Handle the sign-up logic here
+                        }
+                      : null,
+                  child: const Text('Update Password'),
+                ),
               ),
             ],
           ),

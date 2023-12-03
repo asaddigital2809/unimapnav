@@ -39,8 +39,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Stack(
                 children: [
                   CircleAvatar(
-                    backgroundImage: _profileImage ??
-                        const AssetImage('assets/images/profile.png'),
+                    // backgroundImage: _profileImage ??
+                    //     const AssetImage('assets/images/profile.png'),
                     backgroundColor: Colors.grey[300],
                     radius: 50,
                     child: _profileImage == null
