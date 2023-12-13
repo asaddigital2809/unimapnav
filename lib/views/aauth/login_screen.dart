@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:unimapnav/views/aauth/signup_screen.dart';
 import 'package:unimapnav/widgets/custom_password_textfield.dart';
 import 'package:unimapnav/widgets/custom_textfield.dart';
 
+import '../../controllers/user_controller.dart';
 import '../bottom_nav/bottom_nav.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,6 +15,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late UserController _userController;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    try {
+      _userController = Get.find();
+    } catch (e) {
+      _userController = Get.put(UserController());
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           CustomTextField(
             labelText: 'Email',
+            controller: emailController,
             textInputType: TextInputType.emailAddress,
             borderColor: Colors.green,
           ),
@@ -38,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           CustomPasswordTextField(
             hintText: 'Password',
-
+            controller: passwordController,
           ),
           const SizedBox(
             height: 20,
@@ -46,11 +63,16 @@ class _LoginScreenState extends State<LoginScreen> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BottomNav()),
-                    (route) => false);
+              onPressed: ()async {
+                if(emailController.text.isEmpty || passwordController.text.isEmpty){
+                  Get.snackbar('Error', 'Please fill all the fields');
+                  return;
+                }
+
+                 await  _userController.signInWithEmail(
+                    emailController.text, passwordController.text,context);
+
+
               },
               child: const Text('Login'),
             ),
@@ -61,10 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
           TextButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SignUpScreen()),
-                    );
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                );
               },
               child: const Text(
                 'Don\'t have an account? Sign up',
