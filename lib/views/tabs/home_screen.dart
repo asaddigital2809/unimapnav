@@ -16,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   MyMapController myMapController = Get.put(MyMapController());
 
-
   @override
   void initState() {
     super.initState();
@@ -25,16 +24,30 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetBuilder<MyMapController>(
-        init: myMapController,
-        builder: (controller) => GoogleMap(
-          onMapCreated: controller.onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: controller.initialPosition,
-            zoom: 11.0,
-          ),
-          markers: controller.markers,
-        ),)
-    );
+        body: GetBuilder<MyMapController>(
+      init: myMapController,
+      builder: (controller) => myMapController.mapLoading
+          ? const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text("Loading Map..."),
+                ],
+              ),
+            )
+          : GoogleMap(
+              onMapCreated: controller.onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: controller.initialPosition,
+                zoom: 13.4,
+              ),
+              markers: controller.markers,
+            ),
+    ));
   }
 }

@@ -6,6 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:unimapnav/model/location_model.dart';
 
 class MyMapController extends GetxController {
+  bool mapLoading = false;
   @override
   void onInit() {
     getCurrentLocation();
@@ -53,6 +54,8 @@ class MyMapController extends GetxController {
   }
 
   Future<void> getCurrentLocation() async {
+    mapLoading = true;
+    update();
     PermissionStatus permission = await Permission.location.request();
     if (permission.isGranted) {
       final geoposition = await Geolocator.getCurrentPosition(
@@ -69,6 +72,7 @@ class MyMapController extends GetxController {
         target: position,
         zoom: 11.0,
       )));
+      mapLoading = false;
       update();
     } else {
       // Handle permission denied case
