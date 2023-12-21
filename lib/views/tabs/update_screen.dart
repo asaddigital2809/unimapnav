@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unimapnav/controllers/updates_controller.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/readmore_text.dart';
 
@@ -106,10 +107,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
                                                 color: Colors.white,
                                               ),
                                               onTap: () {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(const SnackBar(
-                                                        content: Text(
-                                                            'Will be able to download later')));
+                                                launchUrl(Uri.parse(doc['url']
+                                                    .toString())); // Open the link in browser
                                                 // Open the link in browser
                                               },
                                               trailing: const Icon(
